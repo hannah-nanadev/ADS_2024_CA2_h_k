@@ -6,7 +6,7 @@ class TreeMap {
 	BinaryTree<Entity<K, V>> map;
 public:
 	void clear(); //implemented
-	bool containsKey(K key);
+	bool containsKey(K key); //implemented
 	V& get(K key); //implemented
 	BinaryTree<K> keySet();
 	void put(K& key, V& value); //implemented
@@ -57,4 +57,18 @@ bool TreeMap<K, V>::removeKey(K key)
 	Entity<K, V> e;
 	e.key = key;
 	return map.remove(e);
+}
+
+template<class K, class V>
+bool TreeMap<K, V>::containsKey(K key)
+{
+	try
+	{
+		this->get(key);
+		return true;
+	}
+	catch (logic_error)
+	{
+		return false;
+	}
 }

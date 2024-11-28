@@ -26,6 +26,10 @@ int main()
 	{
 		cout << "Failed to remove value at " << y << endl;
 	}
+
+	cout << tree.containsKey(x) << endl;
+	cout << tree.containsKey(y) << endl;
+
 	return 0;
 	
 }
