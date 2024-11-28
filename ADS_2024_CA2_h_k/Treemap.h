@@ -11,8 +11,8 @@ public:
 	BinaryTree<K> keySet();
 	void put(K& key, V& value); //implemented
 	int size(); //implemented
-	bool removeKey(K key);
-	V& operator[](K key);
+	bool removeKey(K key); //implemented
+	V& operator[](K key); //implemented
 };
 
 template<class K, class V>
@@ -23,12 +23,19 @@ void TreeMap<K, V>::put(K& key, V& value)
 	e.value = value;
 	map.add(e);
 }
+
 template<class K, class V>
 V& TreeMap<K, V>::get(K key)
 {
 	Entity<K, V> e;
 	e.key = key;
 	return map.get(e).value;
+}
+
+template<class K, class V>
+V& TreeMap<K, V>::operator[](K key)
+{
+	return this->get(key);
 }
 
 template<class K, class V>
