@@ -17,5 +17,15 @@ int main()
 
 	cout << tree.get(y) << endl;
 
+	try
+	{
+		tree.removeKey(y);
+		cout << "Successfully removed value at " << y << endl;
+	}
+	catch(...)
+	{
+		cout << "Failed to remove value at " << y << endl;
+	}
 	return 0;
+	
 }

@@ -1,15 +1,16 @@
 #pragma once
 #include "Entity.h"
+
 template<class K, class V>
 class TreeMap {
 	BinaryTree<Entity<K, V>> map;
 public:
-	void clear();
+	void clear(); //implemented
 	bool containsKey(K key);
-	V& get(K key);
+	V& get(K key); //implemented
 	BinaryTree<K> keySet();
-	void put(K& key, V& value);
-	int size();
+	void put(K& key, V& value); //implemented
+	int size(); //implemented
 	bool removeKey(K key);
 	V& operator[](K key);
 };
@@ -36,8 +37,17 @@ void TreeMap<K, V>::clear()
 	map.clear();
 }
 
+
 template<class K, class V>
 int TreeMap<K, V>::size()
 {
 	return map.count();
+}
+
+template<class K, class V>
+bool TreeMap<K, V>::removeKey(K key)
+{
+	Entity<K, V> e;
+	e.key = key;
+	return map.remove(e);
 }
