@@ -249,7 +249,7 @@ BinaryTree<T>::~BinaryTree()
 }
 
 template<class T>
-void BinaryTree<T>::printInOrder()
+void BinaryTree<T>::printInOrder() //left root right
 {
 	this->printInOrder(root);
 	cout << endl;
@@ -257,24 +257,39 @@ void BinaryTree<T>::printInOrder()
 template<class T>
 void BinaryTree<T>::printInOrder(BSTNode<T> *node)
 {
-	
+	if (node == nullptr)
+		return;
+
+	//Print nodes, recurring as necessary when going beyond current node
+	printInOrder(node->getLeft());
+	cout << node->getItem() << ", ";
+	printInOrder(node->getRight());
+
 }
 
 template<class T>
-void BinaryTree<T>::printPreOrder()
-{
+void BinaryTree<T>::printPreOrder() //root left right
+{	
 	this->printPreOrder(root);
 	cout << endl;
 }
 template<class T>
-void BinaryTree<T>::printPreOrder(BSTNode<T> *node)
+void BinaryTree<T>::printPreOrder(BSTNode<T> *node) //Taken from https://www.geeksforgeeks.org/preorder-traversal-of-binary-tree/
 {
+	if (node == nullptr)
+		return;
 
-	
+	//Print current node
+	cout << node->getItem() << ", ";
+
+	//Recur on sides of tree
+	printPreOrder(node->getLeft());
+	printPreOrder(node->getRight());
+
 }
 
 template<class T>
-void BinaryTree<T>::printPostOrder()
+void BinaryTree<T>::printPostOrder() //left right root
 {
 	this->printPostOrder(root);
 	cout << endl;
@@ -282,5 +297,10 @@ void BinaryTree<T>::printPostOrder()
 template<class T>
 void BinaryTree<T>::printPostOrder(BSTNode<T> *node)
 {
+	if (node == nullptr)
+		return;
 
+	printPostOrder(node->getLeft());
+	printPostOrder(node->getRight());
+	cout << node->getItem() << ", ";
 }
