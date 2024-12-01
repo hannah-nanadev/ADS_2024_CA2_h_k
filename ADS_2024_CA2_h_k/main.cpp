@@ -34,6 +34,7 @@ int main()
 		}
 
 		cout << "List of letters:" << endl;
+		wordMap.keySet().printInOrder();
 
 	}
 	else

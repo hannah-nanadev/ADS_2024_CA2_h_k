@@ -16,8 +16,6 @@ public:
 	void clear();
 	int count();
 	T& get(T& item);
-	BSTNode<T>& getLeftOf(T& item);
-	BSTNode<T>& getRightOf(T& item);
 
 	void printInOrder();
 	void printInOrder(BSTNode<T> *node);
@@ -168,48 +166,7 @@ T& BinaryTree<T>::get(T& item)
 	}
 	throw logic_error("ITem not found");
 }
-template <class T>
-BSTNode<T>& BinaryTree<T>::getLeftOf(T& item)
-{
-	bool found = false;
-	BSTNode<T>* current = root;
-	while (!found)
-	{
 
-		if (current == nullptr)
-			break;
-		if (current->getItem() == item)
-			if (current->getLeft() == nullptr)
-				break;
-			else return current->getLeft();
-		else if (current->getItem() > item)
-			current = current->getLeft();
-		else
-			current = current->getRight();
-	}
-	throw logic_error("ITem not found");
-}
-template <class T>
-BSTNode<T>& BinaryTree<T>::getRightOf(T& item)
-{
-	bool found = false;
-	BSTNode<T>* current = root;
-	while (!found)
-	{
-
-		if (current == nullptr)
-			break;
-		if (current->getItem() == item)
-			if (current->getRight() == nullptr)
-				break;
-			else return current->getRight();
-		else if (current->getItem() > item)
-			current = current->getLeft();
-		else
-			current = current->getRight();
-	}
-	throw logic_error("ITem not found");
-}
 template <class T>
 void BinaryTree<T>::addItemToArray(BSTNode<T>* node, int &pos, T *arr)
 {
