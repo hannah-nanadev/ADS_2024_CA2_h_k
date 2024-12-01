@@ -1,35 +1,26 @@
 #include <iostream>
 #include <fstream>
-#include "BinaryTree.h"
-#include "BSTNode.h"
-#include "TreeMap.h"
+#include "Treemap.h"
 
 using namespace std;
 
 int main()
 {
-	TreeMap<int, string> tree;
-	int x = 1, y = 2;
-	string s1 = "One", s2 = "two";
+	//Initialise map of words/letters
+	TreeMap<string, vector<string>> wordMap;
 
-	tree.put(x, s1);
-	tree.put(y, s2);
-
-	cout << tree.get(y) << endl;
-
-	try
+	//Read from file
+	ifstream fin("C:\\Users\\Hannah\\source\\repos\\ADS_2024_CA2_h_k\\ADS_2024_CA2_h_k\\p11s.txt");
+	if(fin)
 	{
-		tree.removeKey(y);
-		cout << "Successfully removed value at " << y << endl;
-	}
-	catch(...)
-	{
-		cout << "Failed to remove value at " << y << endl;
-	}
+		cout << "File loaded successfully!" << endl;
 
-	cout << tree.containsKey(x) << endl;
-	cout << tree.containsKey(y) << endl;
+	}
+	else
+	{
+		cout << "Unable to open file." << endl;
+	}
 
 	return 0;
-	
+
 }

@@ -1,10 +1,11 @@
 #pragma once
 #include <queue>
 #include "Entity.h"
+#include "BinaryTree.h"
 
 template<class K, class V>
 class TreeMap {
-	BinaryTree<Entity<K, V>> map;
+	BinaryTree < Entity <K, V >> map;
 public:
 	void clear();
 	bool containsKey(K key);
