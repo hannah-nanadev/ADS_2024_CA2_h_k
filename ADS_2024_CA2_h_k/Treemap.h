@@ -1,18 +1,19 @@
 #pragma once
+#include <queue>
 #include "Entity.h"
 
 template<class K, class V>
 class TreeMap {
 	BinaryTree<Entity<K, V>> map;
 public:
-	void clear(); //implemented
-	bool containsKey(K key); //implemented
-	V& get(K key); //implemented
+	void clear();
+	bool containsKey(K key);
+	V& get(K key);
 	BinaryTree<K> keySet();
-	void put(K& key, V& value); //implemented
-	int size(); //implemented
-	bool removeKey(K key); //implemented
-	V& operator[](K key); //implemented
+	void put(K& key, V& value);
+	int size();
+	bool removeKey(K key);
+	V& operator[](K key);
 };
 
 template<class K, class V>
@@ -71,4 +72,29 @@ bool TreeMap<K, V>::containsKey(K key)
 	{
 		return false;
 	}
+}
+
+template<class K, class V>
+BinaryTree<K> TreeMap<K, V>::keySet()
+{
+	BinaryTree<K> keys;
+	queue<BSTNode<>> nodeQue;
+	nodeQue.push(map.root);
+
+	while(!nodeQue.empty)
+	{
+		if (map.getLeftOf(nodeQue.front()))
+		{
+			nodeQue.push(map.getLeftOf(nodeQue.front()));
+		}
+		if (map.getRightOf(nodeQue.front()))
+		{
+			nodeQue.push(map.getRightOf(nodeQue.front()));
+		}
+		keys.add(nodeQue.front().key);
+		nodeQue.pop();
+	}
+
+	return keys;
+
 }
