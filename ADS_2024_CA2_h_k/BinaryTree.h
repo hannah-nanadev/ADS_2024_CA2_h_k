@@ -219,7 +219,7 @@ void BinaryTree<T>::printInOrder(BSTNode<T> *node)
 
 	//Print nodes, recurring as necessary when going beyond current node
 	printInOrder(node->getLeft());
-	cout << node->getItem() << ", ";
+	cout << node->getItem() << " ";
 	printInOrder(node->getRight());
 
 }
@@ -237,7 +237,7 @@ void BinaryTree<T>::printPreOrder(BSTNode<T> *node) //Taken from https://www.gee
 		return;
 
 	//Print current node
-	cout << node->getItem() << ", ";
+	cout << node->getItem() << " ";
 
 	//Recur on sides of tree
 	printPreOrder(node->getLeft());
@@ -259,5 +259,5 @@ void BinaryTree<T>::printPostOrder(BSTNode<T> *node)
 
 	printPostOrder(node->getLeft());
 	printPostOrder(node->getRight());
-	cout << node->getItem() << ", ";
+	cout << node->getItem() << " ";
 }

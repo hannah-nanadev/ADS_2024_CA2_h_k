@@ -79,20 +79,20 @@ template<class K, class V>
 BinaryTree<K> TreeMap<K, V>::keySet()
 {
 	BinaryTree<K> keys;
-	queue<BSTNode<K>*> nodeQue;
+	queue<BSTNode<Entity<K, V >>*> nodeQue;
 	nodeQue.push(map.root);
 
-	while(!nodeQue.empty)
+	while(!nodeQue.empty())
 	{
-		if (nodeQue.front()->left!=nullptr)
+		if (nodeQue.front()->getLeft ()!=nullptr)
 		{
-			nodeQue.push(nodeQue.front()->right);
+			nodeQue.push(nodeQue.front()->getLeft());
 		}
-		if (nodeQue.front()->right!=nullptr)
+		if (nodeQue.front()->getRight()!=nullptr)
 		{
-			nodeQue.push(nodeQue.front()->right);
+			nodeQue.push(nodeQue.front()->getRight());
 		}
-		keys.add(nodeQue.front().key);
+		keys.add(nodeQue.front()->getItem().key);
 		nodeQue.pop();
 	}
 

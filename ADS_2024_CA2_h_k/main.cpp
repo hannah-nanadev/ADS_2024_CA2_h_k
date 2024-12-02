@@ -10,7 +10,7 @@ int main()
 	TreeMap<string, vector<string>> wordMap;
 
 	//Read from file
-	ifstream fin("C:\\Users\\Hannah\\source\\repos\\ADS_2024_CA2_h_k\\ADS_2024_CA2_h_k\\p11s.txt");
+	ifstream fin("p11s.txt");//C:\\Users\\Hannah\\source\\repos\\ADS_2024_CA2_h_k\\ADS_2024_CA2_h_k
 	if(fin)
 	{
 		cout << "File loaded successfully!" << endl;
@@ -24,11 +24,15 @@ int main()
 				{
 					wordMap.get(firstChar).push_back(word);
 				}
+				else
+				{
+					vector<string> newVector = { word };
+					wordMap.put(firstChar, newVector);
+				}
 			}
 			catch (logic_error)
 			{
-				vector<string> newVector = { word };
-				wordMap.put(firstChar, newVector);
+				cout << "An error occurred." << endl;
 			}
 
 		}
