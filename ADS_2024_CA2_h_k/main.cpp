@@ -3,11 +3,12 @@
 #include "Treemap.h"
 
 using namespace std;
+bool menu(TreeMap<string, BinaryTree<string>> map);
 
 int main()
 {
 	//Initialise map of words/letters
-	TreeMap<string, vector<string>> wordMap;
+	TreeMap<string, BinaryTree<string>> wordMap;
 
 	//Read from file
 	ifstream fin("p11s.txt");//C:\\Users\\Hannah\\source\\repos\\ADS_2024_CA2_h_k\\ADS_2024_CA2_h_k
@@ -22,12 +23,13 @@ int main()
 			try {
 				if (wordMap.containsKey(firstChar))
 				{
-					wordMap.get(firstChar).push_back(word);
+					wordMap.get(firstChar).add(word);
 				}
 				else
 				{
-					vector<string> newVector = { word };
-					wordMap.put(firstChar, newVector);
+					BinaryTree<string> newTree;
+					newTree.add(word);
+;					wordMap.put(firstChar, newTree);
 				}
 			}
 			catch (logic_error)
@@ -40,6 +42,11 @@ int main()
 		cout << "List of letters:" << endl;
 		wordMap.keySet().printInOrder();
 
+		bool run;
+		do {
+			run = menu(wordMap);
+		} while (run);
+
 	}
 	else
 	{
@@ -48,4 +55,30 @@ int main()
 
 	return 0;
 
+}
+
+bool menu(TreeMap<string, BinaryTree<string>> map)
+{
+	cout << "Please input letter from list above to see all associated words, or 'end' to exit." << endl << ">";
+	string input;
+	cin >> input;
+
+	if (input != "end")
+	{
+		try
+		{
+			map.get(input).printInOrder();
+		}
+		catch (logic_error)
+		{
+			cout << "Letter " << input << " not found." << endl;
+		}
+		return true;
+	}
+	else
+	{
+		cout << "Thank you for using the program!" << endl;
+		return false;
+	}
+	
 }
