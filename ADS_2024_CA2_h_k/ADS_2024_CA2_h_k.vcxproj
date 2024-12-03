@@ -133,8 +133,8 @@
     <ClInclude Include="TreeMap.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="mainwordletters.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="mainbutcsv.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
