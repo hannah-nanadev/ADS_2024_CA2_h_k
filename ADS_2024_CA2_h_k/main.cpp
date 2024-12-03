@@ -5,6 +5,9 @@
 using namespace std;
 int selectField();
 
+template<class K, class V>
+TreeMap<K, vector<V>> parseMap(int field);
+
 int main()
 {
 	int selection = selectField();
@@ -41,4 +44,10 @@ int selectField()
 
 	return selection;
 	
+}
+
+template<class K, class V>
+TreeMap<K, vector<V>> parseMap(int field)
+{
+
 }
