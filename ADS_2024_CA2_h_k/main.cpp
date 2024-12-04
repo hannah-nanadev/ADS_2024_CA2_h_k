@@ -5,8 +5,15 @@
 using namespace std;
 int selectField();
 
-template<class K, class V>
-TreeMap<K, vector<V>> parseMap(int field);
+template <class K, class V>
+void display(TreeMap<K, V>& map)
+{
+	//display all keys
+	// allow the user to select 1 key
+	// print list from key
+	// display VAlues
+}
+
 
 int main()
 {
@@ -28,26 +35,19 @@ int selectField()
 		cout << "4 - " << endl;
 		cout << "5 - " << endl;
 
-		cin >> selection; //TODO: this explodes if met with a string. Will fix later
-
-		switch (selection) {
-		case 1:
-		case 2:
-		case 3:
-		case 4:
-		case 5:
-			run = false; break;
-		default:
+		cin >> selection;
+		if (selection <= 0 || selection >= 6)
+		{
 			cout << "Invalid input. Please try again." << endl;
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}
+		else
+		{
+			run = false;
 		}
 	}
 
 	return selection;
 	
-}
-
-template<class K, class V>
-TreeMap<K, vector<V>> parseMap(int field)
-{
-
 }
