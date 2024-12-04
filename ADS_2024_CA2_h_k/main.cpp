@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include "Treemap.h"
 #include "BinaryTree.h"
 
@@ -26,6 +27,11 @@ void display(TreeMap<K, BinaryTree<App*>>& map);
 
 template <class K>
 void populate(TreeMap<K, BinaryTree<App*>>& map, int selection);
+
+App* constructApp(string csv);
+
+template <class K>
+void addNode(TreeMap<K, BinaryTree<App*>>& map, App* newApp, K key);
 
 int main()
 {
@@ -87,11 +93,99 @@ int selectField()
 template <class K>
 void populate(TreeMap<K, BinaryTree<App*>>& map, int selection)
 {
+	ifstream fin("MOCK_DATA.csv");
+	if (fin)
+	{
+		string line;
+		getline(fin, line); //Quickly progress past line 1
+		
+		while (fin >> line)
+		{
+			getline(fin, line);
+			App* newApp = constructApp(line);
 
+			switch (selection) {
+				case 1: {
+					addNode(map, newApp, newApp->id);
+					break;
+				}
+				case 2: {
+					addNode(map, newApp, newApp->appName);
+					break;
+				}
+				case 3: {
+					addNode(map, newApp, newApp->developer);
+					break;
+				}
+				case 4: {
+					addNode(map, newApp, newApp->platform);
+					break;
+				}
+				case 5: {
+					addNode(map, newApp, newApp->releaseDate);
+					break;
+				}
+				case 6: {
+					addNode(map, newApp, newApp->price);
+					break;
+				}
+			}
+		}
+	}
+	else
+	{
+		cout << "Error opening file." << endl;
+	}
+}
+
+App* constructApp(string csv)
+{ //this code's about to be really awkward but we ball
+	stringstream sstr(csv);
+	const char delim = ',';
+
+	int id;
+	string appName;
+	string developer;
+	string platform;
+	string releaseDate;
+	float price;
+
+	//set id
+	string temp;
+	getline(sstr, temp, delim);
+	id = stoi(temp);
+
+	//set strings
+	getline(sstr, appName, delim);
+	getline(sstr, developer, delim);
+	getline(sstr, platform, delim);
+	getline(sstr, releaseDate, delim);
+
+	//set price
+	getline(sstr, temp, delim);
+	price = stof(temp);
+
+	return new App{ id, appName, developer, platform, releaseDate, price };
+}
+
+template <class K>
+void addNode(TreeMap<K, BinaryTree<App*>>& map, App* newApp, K key)
+{
+	if (map.containsKey(key))
+	{
+		map.get(key).add(newApp);
+	}
+	else
+	{
+		BinaryTree<App*> appList;
+		appList.add(newApp);
+		map.put(key, appList);
+	}
 }
 
 template <class K>
 void display(TreeMap<K, BinaryTree<App*>>& map)
 {
-
-}
+	cout << "Unique instances of selected field: " << endl;
+	map.keySet().printInOrder();
+};
