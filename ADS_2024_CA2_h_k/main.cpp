@@ -6,15 +6,6 @@
 using namespace std;
 int selectField();
 
-template <class K, class V>
-void display(TreeMap<K, V>& map)
-{
-	//display all keys
-	// allow the user to select 1 key
-	// print list from key
-	// display VAlues
-}
-
 struct App
 {
 	int id;
@@ -25,6 +16,17 @@ struct App
 	float price;
 };
 
+template <class K>
+void display(TreeMap<K, BinaryTree<App*>>& map);
+	//display all keys
+	// allow the user to select 1 key
+	// print list from key
+	// display VAlues
+
+
+template <class K>
+void populate(TreeMap<K, BinaryTree<App*>>& map, int selection);
+
 int main()
 {
 	int selection = selectField();
@@ -32,14 +34,20 @@ int main()
 	if (selection == 1)
 	{
 		TreeMap<int, BinaryTree<App*>> map;
+		populate(map, selection);
+		display(map);
 	}
 	else if (selection == 6)
 	{
 		TreeMap<float, BinaryTree<App*>> map;
+		populate(map, selection);
+		display(map);
 	}
 	else
 	{
 		TreeMap<string, BinaryTree<App*>> map;
+		populate(map, selection);
+		display(map);
 	}
 
 	return 0;
@@ -74,4 +82,16 @@ int selectField()
 
 	return selection;
 	
+}
+
+template <class K>
+void populate(TreeMap<K, BinaryTree<App*>>& map, int selection)
+{
+
+}
+
+template <class K>
+void display(TreeMap<K, BinaryTree<App*>>& map)
+{
+
 }
