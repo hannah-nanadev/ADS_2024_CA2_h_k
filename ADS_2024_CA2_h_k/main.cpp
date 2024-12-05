@@ -43,7 +43,8 @@ int main()
 			string line;
 			getline(fin, line); //Quickly progress past line 1
 
-			while (fin >> line)
+
+			while (!fin.eof())
 			{
 				getline(fin, line);
 				App* newApp = constructApp(line);
@@ -76,7 +77,7 @@ int main()
 			string line;
 			getline(fin, line); //Quickly progress past line 1
 
-			while (fin >> line)
+			while (!fin.eof())
 			{
 				getline(fin, line);
 				App* newApp = constructApp(line);
@@ -112,7 +113,7 @@ int main()
 			{
 			case 2: //app name
 			{
-				while (fin >> line)
+				while (!fin.eof())
 				{
 					getline(fin, line);
 					App* newApp = constructApp(line);
@@ -131,7 +132,7 @@ int main()
 			}
 			case 3: //developer
 			{
-				while (fin >> line)
+				while (!fin.eof())
 				{
 					getline(fin, line);
 					App* newApp = constructApp(line);
@@ -150,7 +151,7 @@ int main()
 			}
 			case 4: //platform
 			{
-				while (fin >> line)
+				while (!fin.eof())
 				{
 					getline(fin, line);
 					App* newApp = constructApp(line);
@@ -169,7 +170,7 @@ int main()
 			}
 			case 5: //release date
 			{
-				while (fin >> line)
+				while (!fin.eof())
 				{
 					getline(fin, line);
 					App* newApp = constructApp(line);
