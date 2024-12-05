@@ -24,10 +24,6 @@ void display(TreeMap<K, BinaryTree<App*>>& map);
 	// print list from key
 	// display VAlues
 
-
-template <class K>
-void populate(TreeMap<K, BinaryTree<App*>>& map, int selection);
-
 App* constructApp(string csv);
 
 int main()
@@ -228,108 +224,6 @@ int selectField()
 
 	return selection;
 	
-}
-
-template <class K>
-void populate(TreeMap<K, BinaryTree<App*>>& map, int selection)
-{
-	ifstream fin("MOCK_DATA.csv");
-	if (fin)
-	{
-		string line;
-		getline(fin, line); //Quickly progress past line 1
-		
-		while (fin >> line)
-		{
-			getline(fin, line);
-			App* newApp = constructApp(line);
-
-			switch (selection) {
-				case 1: {
-					if (map.containsKey(newApp->id))
-					{
-						map.get(newApp->id).add(newApp);
-					}
-					else
-					{
-						BinaryTree<App*> appList;
-						appList.add(newApp);
-						map.put(newApp->id, appList);
-					}
-					break;
-				}
-				case 2: {
-					if (map.containsKey(newApp->appName))
-					{
-						map.get(newApp->appName).add(newApp);
-					}
-					else
-					{
-						BinaryTree<App*> appList;
-						appList.add(newApp);
-						map.put(newApp->appName, appList);
-					}
-					break;
-				}
-				case 3: {
-					if (map.containsKey(newApp->developer))
-					{
-						map.get(newApp->developer).add(newApp);
-					}
-					else
-					{
-						BinaryTree<App*> appList;
-						appList.add(newApp);
-						map.put(newApp->developer, appList);
-					}
-					break;
-				}
-				case 4: {
-					if (map.containsKey(newApp->platform))
-					{
-						map.get(newApp->platform).add(newApp);
-					}
-					else
-					{
-						BinaryTree<App*> appList;
-						appList.add(newApp);
-						map.put(newApp->platform, appList);
-					}
-					break;
-				}
-				case 5: {
-					if (map.containsKey(newApp->releaseDate))
-					{
-						map.get(newApp->releaseDate).add(newApp);
-					}
-					else
-					{
-						BinaryTree<App*> appList;
-						appList.add(newApp);
-						map.put(newApp->releaseDate, appList);
-					}
-					break;
-				}
-				case 6: {
-					if (map.containsKey(newApp->price))
-					{
-						map.get(newApp->price).add(newApp);
-					}
-					else
-					{
-						BinaryTree<App*> appList;
-						appList.add(newApp);
-						map.put(newApp->price, appList);
-					}
-					break;
-				}
-			}
-		}
-	}
-	else
-	{
-		cout << "Error opening file." << endl;
-	}
 }
 
 App* constructApp(string csv)

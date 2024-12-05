@@ -219,7 +219,7 @@ void BinaryTree<T>::printInOrder(BSTNode<T> *node)
 
 	//Print nodes, recurring as necessary when going beyond current node
 	printInOrder(node->getLeft());
-	cout << node->getItem() << " ";
+	cout << node->getItem() << ", ";
 	printInOrder(node->getRight());
 
 }
