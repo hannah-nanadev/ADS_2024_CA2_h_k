@@ -30,32 +30,171 @@ void populate(TreeMap<K, BinaryTree<App*>>& map, int selection);
 
 App* constructApp(string csv);
 
-template <class K>
-void addNode(TreeMap<K, BinaryTree<App*>>& map, App* newApp, K key);
-
 int main()
 {
 	int selection = selectField();
 
 	if (selection == 1)
-	{
+	{ //id
 		TreeMap<int, BinaryTree<App*>> map;
-		populate(map, selection);
-		display(map);
+		ifstream fin("MOCK_DATA.csv");
+		if (fin)
+		{
+			string line;
+			getline(fin, line); //Quickly progress past line 1
+
+			while (fin >> line)
+			{
+				getline(fin, line);
+				App* newApp = constructApp(line);
+				if (map.containsKey(newApp->id))
+				{
+					map.get(newApp->id).add(newApp);
+				}
+				else
+				{
+					BinaryTree<App*> appList;
+					appList.add(newApp);
+					map.put(newApp->id, appList);
+				}
+				
+			}
+		}		
+		else
+		{
+			cout << "Error opening file." << endl;
+		}
+	display(map);
+
 	}
 	else if (selection == 6)
-	{
+	{ //price
 		TreeMap<float, BinaryTree<App*>> map;
-		populate(map, selection);
+		ifstream fin("MOCK_DATA.csv");
+		if (fin)
+		{
+			string line;
+			getline(fin, line); //Quickly progress past line 1
+
+			while (fin >> line)
+			{
+				getline(fin, line);
+				App* newApp = constructApp(line);
+				if (map.containsKey(newApp->price))
+				{
+					map.get(newApp->price).add(newApp);
+				}
+				else
+				{
+					BinaryTree<App*> appList;
+					appList.add(newApp);
+					map.put(newApp->price, appList);
+				}
+
+			}
+		}
+		else
+		{
+			cout << "Error opening file." << endl;
+		}
 		display(map);
 	}
 	else
-	{
+	{ //string fields
 		TreeMap<string, BinaryTree<App*>> map;
-		populate(map, selection);
+		ifstream fin("MOCK_DATA.csv");
+		if (fin)
+		{
+			string line;
+			getline(fin, line); //Quickly progress past line 1
+
+			switch (selection)
+			{
+			case 2: //app name
+			{
+				while (fin >> line)
+				{
+					getline(fin, line);
+					App* newApp = constructApp(line);
+					if (map.containsKey(newApp->appName))
+					{
+						map.get(newApp->appName).add(newApp);
+					}
+					else
+					{
+						BinaryTree<App*> appList;
+						appList.add(newApp);
+						map.put(newApp->appName, appList);
+					}
+					break;
+				}
+			}
+			case 3: //developer
+			{
+				while (fin >> line)
+				{
+					getline(fin, line);
+					App* newApp = constructApp(line);
+					if (map.containsKey(newApp->developer))
+					{
+						map.get(newApp->developer).add(newApp);
+					}
+					else
+					{
+						BinaryTree<App*> appList;
+						appList.add(newApp);
+						map.put(newApp->developer, appList);
+					}
+					break;
+				}
+			}
+			case 4: //platform
+			{
+				while (fin >> line)
+				{
+					getline(fin, line);
+					App* newApp = constructApp(line);
+					if (map.containsKey(newApp->platform))
+					{
+						map.get(newApp->platform).add(newApp);
+					}
+					else
+					{
+						BinaryTree<App*> appList;
+						appList.add(newApp);
+						map.put(newApp->platform, appList);
+					}
+					break;
+				}
+			}
+			case 5: //release date
+			{
+				while (fin >> line)
+				{
+					getline(fin, line);
+					App* newApp = constructApp(line);
+					if (map.containsKey(newApp->releaseDate))
+					{
+						map.get(newApp->releaseDate).add(newApp);
+					}
+					else
+					{
+						BinaryTree<App*> appList;
+						appList.add(newApp);
+						map.put(newApp->releaseDate, appList);
+					}
+					break;
+				}
+			}
+
+			}
+		}
+		else
+		{
+			cout << "Error opening file." << endl;
+		}
 		display(map);
 	}
-
 	return 0;
 }
 
@@ -106,27 +245,81 @@ void populate(TreeMap<K, BinaryTree<App*>>& map, int selection)
 
 			switch (selection) {
 				case 1: {
-					addNode(map, newApp, newApp->id);
+					if (map.containsKey(newApp->id))
+					{
+						map.get(newApp->id).add(newApp);
+					}
+					else
+					{
+						BinaryTree<App*> appList;
+						appList.add(newApp);
+						map.put(newApp->id, appList);
+					}
 					break;
 				}
 				case 2: {
-					addNode(map, newApp, newApp->appName);
+					if (map.containsKey(newApp->appName))
+					{
+						map.get(newApp->appName).add(newApp);
+					}
+					else
+					{
+						BinaryTree<App*> appList;
+						appList.add(newApp);
+						map.put(newApp->appName, appList);
+					}
 					break;
 				}
 				case 3: {
-					addNode(map, newApp, newApp->developer);
+					if (map.containsKey(newApp->developer))
+					{
+						map.get(newApp->developer).add(newApp);
+					}
+					else
+					{
+						BinaryTree<App*> appList;
+						appList.add(newApp);
+						map.put(newApp->developer, appList);
+					}
 					break;
 				}
 				case 4: {
-					addNode(map, newApp, newApp->platform);
+					if (map.containsKey(newApp->platform))
+					{
+						map.get(newApp->platform).add(newApp);
+					}
+					else
+					{
+						BinaryTree<App*> appList;
+						appList.add(newApp);
+						map.put(newApp->platform, appList);
+					}
 					break;
 				}
 				case 5: {
-					addNode(map, newApp, newApp->releaseDate);
+					if (map.containsKey(newApp->releaseDate))
+					{
+						map.get(newApp->releaseDate).add(newApp);
+					}
+					else
+					{
+						BinaryTree<App*> appList;
+						appList.add(newApp);
+						map.put(newApp->releaseDate, appList);
+					}
 					break;
 				}
 				case 6: {
-					addNode(map, newApp, newApp->price);
+					if (map.containsKey(newApp->price))
+					{
+						map.get(newApp->price).add(newApp);
+					}
+					else
+					{
+						BinaryTree<App*> appList;
+						appList.add(newApp);
+						map.put(newApp->price, appList);
+					}
 					break;
 				}
 			}
@@ -166,21 +359,6 @@ App* constructApp(string csv)
 	price = stof(temp);
 
 	return new App{ id, appName, developer, platform, releaseDate, price };
-}
-
-template <class K>
-void addNode(TreeMap<K, BinaryTree<App*>>& map, App* newApp, K key)
-{
-	if (map.containsKey(key))
-	{
-		map.get(key).add(newApp);
-	}
-	else
-	{
-		BinaryTree<App*> appList;
-		appList.add(newApp);
-		map.put(key, appList);
-	}
 }
 
 template <class K>
