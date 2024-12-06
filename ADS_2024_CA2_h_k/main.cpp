@@ -107,83 +107,82 @@ int main()
 
 			switch (selection)
 			{
-			case 2: //app name
-			{
-				while (!fin.eof())
+				case 2: //app name
 				{
-					getline(fin, line);
-					App* newApp = constructApp(line);
-					if (map.containsKey(newApp->appName))
+					while (!fin.eof())
 					{
-						map.get(newApp->appName).add(newApp);
-					}
-					else
-					{
-						BinaryTree<App*> appList;
-						appList.add(newApp);
-						map.put(newApp->appName, appList);
+						getline(fin, line);
+						App* newApp = constructApp(line);
+						if (map.containsKey(newApp->appName))
+						{
+							map.get(newApp->appName).add(newApp);
+						}
+						else
+						{
+							BinaryTree<App*> appList;
+							appList.add(newApp);
+							map.put(newApp->appName, appList);
+						}					
 					}
 					break;
 				}
-			}
-			case 3: //developer
-			{
-				while (!fin.eof())
+				case 3: //developer
 				{
-					getline(fin, line);
-					App* newApp = constructApp(line);
-					if (map.containsKey(newApp->developer))
+					while (!fin.eof())
 					{
-						map.get(newApp->developer).add(newApp);
-					}
-					else
-					{
-						BinaryTree<App*> appList;
-						appList.add(newApp);
-						map.put(newApp->developer, appList);
+						getline(fin, line);
+						App* newApp = constructApp(line);
+						if (map.containsKey(newApp->developer))
+						{
+							map.get(newApp->developer).add(newApp);
+						}
+						else
+						{
+							BinaryTree<App*> appList;
+							appList.add(newApp);
+							map.put(newApp->developer, appList);
+						}
 					}
 					break;
 				}
-			}
-			case 4: //platform
-			{
-				while (!fin.eof())
+				case 4: //platform
 				{
-					getline(fin, line);
-					App* newApp = constructApp(line);
-					if (map.containsKey(newApp->platform))
+					while (!fin.eof())
 					{
-						map.get(newApp->platform).add(newApp);
-					}
-					else
-					{
-						BinaryTree<App*> appList;
-						appList.add(newApp);
-						map.put(newApp->platform, appList);
+						getline(fin, line);
+						App* newApp = constructApp(line);
+						if (map.containsKey(newApp->platform))
+						{
+							map.get(newApp->platform).add(newApp);
+						}
+						else
+						{
+							BinaryTree<App*> appList;
+							appList.add(newApp);
+							map.put(newApp->platform, appList);
+						}
 					}
 					break;
 				}
-			}
-			case 5: //release date
-			{
-				while (!fin.eof())
+				case 5: //release date
 				{
-					getline(fin, line);
-					App* newApp = constructApp(line);
-					if (map.containsKey(newApp->releaseDate))
+					while (!fin.eof())
 					{
-						map.get(newApp->releaseDate).add(newApp);
+						getline(fin, line);
+						App* newApp = constructApp(line);
+						if (map.containsKey(newApp->releaseDate))
+						{
+							map.get(newApp->releaseDate).add(newApp);
+						}
+						else
+						{
+							BinaryTree<App*> appList;
+							appList.add(newApp);
+							map.put(newApp->releaseDate, appList);
+						}
 					}
-					else
-					{
-						BinaryTree<App*> appList;
-						appList.add(newApp);
-						map.put(newApp->releaseDate, appList);
-					}
-					break;
+				break;
 				}
-			}
-
 			}
 		}
 		else
