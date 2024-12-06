@@ -14,7 +14,7 @@ struct App
 	string developer;
 	string platform;
 	string releaseDate;
-	float price;
+	double price;
 };
 
 template <class K>
@@ -24,8 +24,9 @@ void display(TreeMap<K, BinaryTree<App*>>& map);
 	// print list from key
 	// display VAlues
 
-template<class K>
-bool displayMenu(TreeMap<K, BinaryTree<App*>>& map);
+bool displayMenu(TreeMap<string, BinaryTree<App*>>& map);
+bool displayMenu(TreeMap<int, BinaryTree<App*>>& map);
+bool displayMenu(TreeMap<double, BinaryTree<App*>>& map);
 
 App* constructApp(string csv);
 
@@ -69,7 +70,7 @@ int main()
 	}
 	else if (selection == 6)
 	{ //price
-		TreeMap<float, BinaryTree<App*>> map;
+		TreeMap<double, BinaryTree<App*>> map;
 		ifstream fin("MOCK_DATA.csv");
 		if (fin)
 		{
@@ -238,7 +239,7 @@ App* constructApp(string csv)
 	string developer;
 	string platform;
 	string releaseDate;
-	float price;
+	double price;
 
 	//set id
 	string temp;
@@ -270,8 +271,7 @@ void display(TreeMap<K, BinaryTree<App*>>& map)
 	} while (run);
 }
 
-template<class K>
-bool displayMenu(TreeMap<K, BinaryTree<App*>>& map)
+bool displayMenu(TreeMap<string, BinaryTree<App*>>& map)
 {
 	cout << "Please enter one of the above options, or -1 to end." << endl << ">";
 	string input;
@@ -281,7 +281,62 @@ bool displayMenu(TreeMap<K, BinaryTree<App*>>& map)
 	{
 		try
 		{
-			cout << "FOUND THING!!" << endl;
+			BinaryTree<App*> apps = map.get(input);
+			cout << "Item found successfully!" << endl;
+		}
+		catch (logic_error)
+		{
+			cout << "Item with this field not found." << endl;
+		}
+		return true;
+	}
+	else
+	{
+		cout << "Thank you for using the program!" << endl;
+		return false;
+	}
+}
+
+bool displayMenu(TreeMap<int, BinaryTree<App*>>& map)
+{
+	cout << "Please enter one of the above options, or -1 to end." << endl << ">";
+	string input;
+	cin >> input;
+	int inputI = stoi(input);
+
+	if (inputI != -1)
+	{
+		try
+		{
+			BinaryTree<App*> apps = map.get(inputI);
+			cout << "Item found successfully!" << endl;
+		}
+		catch (logic_error)
+		{
+			cout << "Item with this field not found." << endl;
+		}
+		return true;
+	}
+	else
+	{
+		cout << "Thank you for using the program!" << endl;
+		return false;
+	}
+}
+
+bool displayMenu(TreeMap<double, BinaryTree<App*>>& map)
+{
+	cout << "Please enter one of the above options, or -1 to end." << endl << ">";
+	string input;
+	cin >> input;
+	int inputD = stod(input);
+
+	if (inputD != -1)
+	{
+		try
+		{
+			BinaryTree<App*> apps = map.get(inputD);
+			cout << "Item found successfully!" << endl;
 		}
 		catch (logic_error)
 		{
