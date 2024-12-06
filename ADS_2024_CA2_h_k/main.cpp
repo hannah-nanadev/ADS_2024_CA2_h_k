@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <sstream>
 #include "Treemap.h"
@@ -14,7 +15,7 @@ struct App
 	string developer;
 	string platform;
 	string releaseDate;
-	double price;
+	float price;
 };
 
 template <class K>
@@ -26,7 +27,7 @@ void display(TreeMap<K, BinaryTree<App*>>& map);
 
 bool displayMenu(TreeMap<string, BinaryTree<App*>>& map);
 bool displayMenu(TreeMap<int, BinaryTree<App*>>& map);
-bool displayMenu(TreeMap<double, BinaryTree<App*>>& map);
+bool displayMenu(TreeMap<float, BinaryTree<App*>>& map);
 
 App* constructApp(string csv);
 
@@ -70,7 +71,7 @@ int main()
 	}
 	else if (selection == 6)
 	{ //price
-		TreeMap<double, BinaryTree<App*>> map;
+		TreeMap<float, BinaryTree<App*>> map;
 		ifstream fin("MOCK_DATA.csv");
 		if (fin)
 		{
@@ -239,7 +240,7 @@ App* constructApp(string csv)
 	string developer;
 	string platform;
 	string releaseDate;
-	double price;
+	float price;
 
 	//set id
 	string temp;
@@ -324,18 +325,18 @@ bool displayMenu(TreeMap<int, BinaryTree<App*>>& map)
 	}
 }
 
-bool displayMenu(TreeMap<double, BinaryTree<App*>>& map)
+bool displayMenu(TreeMap<float, BinaryTree<App*>>& map)
 {
 	cout << "Please enter one of the above options, or -1 to end." << endl << ">";
 	string input;
 	cin >> input;
-	double inputD = stod(input);
+	float inputF = stof(input);
 
-	if (inputD != -1)
+	if (inputF != -1)
 	{
 		try
 		{
-			BinaryTree<App*> apps = map.get(inputD);
+			BinaryTree<App*> apps = map.get(inputF);
 			cout << "Item found successfully!" << endl;
 		}
 		catch (logic_error)
