@@ -329,7 +329,7 @@ bool displayMenu(TreeMap<double, BinaryTree<App*>>& map)
 	cout << "Please enter one of the above options, or -1 to end." << endl << ">";
 	string input;
 	cin >> input;
-	int inputD = stod(input);
+	double inputD = stod(input);
 
 	if (inputD != -1)
 	{
