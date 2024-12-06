@@ -24,6 +24,9 @@ void display(TreeMap<K, BinaryTree<App*>>& map);
 	// print list from key
 	// display VAlues
 
+template<class K>
+bool displayMenu(TreeMap<K, BinaryTree<App*>>& map);
+
 App* constructApp(string csv);
 
 int main()
@@ -260,4 +263,35 @@ void display(TreeMap<K, BinaryTree<App*>>& map)
 {
 	cout << "Unique instances of selected field: " << endl;
 	map.keySet().printInOrder();
-};
+
+	bool run;
+	do {
+		run = displayMenu(map);
+	} while (run);
+}
+
+template<class K>
+bool displayMenu(TreeMap<K, BinaryTree<App*>>& map)
+{
+	cout << "Please enter one of the above options, or -1 to end." << endl << ">";
+	string input;
+	cin >> input;
+	
+	if (input != "-1")
+	{
+		try
+		{
+			cout << "FOUND THING!!" << endl;
+		}
+		catch (logic_error)
+		{
+			cout << "Item with this field not found." << endl;
+		}
+		return true;
+	}
+	else
+	{
+		cout << "Thank you for using the program!" << endl;
+		return false;
+	}
+}
