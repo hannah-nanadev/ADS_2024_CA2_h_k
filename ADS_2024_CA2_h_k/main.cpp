@@ -278,7 +278,7 @@ bool displayMenu(TreeMap<string, BinaryTree<App*>>& map)
 {
 	cout << "Please enter one of the above options, or -1 to end." << endl << ">";
 	string input;
-	cin >> input;
+	getline(cin, input);
 	
 	if (input != "-1")
 	{
@@ -305,7 +305,7 @@ bool displayMenu(TreeMap<int, BinaryTree<App*>>& map)
 {
 	cout << "Please enter one of the above options, or -1 to end." << endl << ">";
 	string input;
-	cin >> input;
+	getline(cin, input);
 	int inputI = stoi(input);
 
 	if (inputI != -1)
@@ -333,7 +333,7 @@ bool displayMenu(TreeMap<float, BinaryTree<App*>>& map)
 {
 	cout << "Please enter one of the above options, or -1 to end." << endl << ">";
 	string input;
-	cin >> input;
+	getline(cin, input);
 	float inputF = stof(input);
 
 	if (inputF != -1)
