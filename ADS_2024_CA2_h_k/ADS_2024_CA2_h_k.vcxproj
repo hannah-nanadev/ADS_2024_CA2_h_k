@@ -127,10 +127,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="appsfromcsv.h" />
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="BSTNode.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="TreeMap.h" />
+    <ClInclude Include="wordlettersfromtxt.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

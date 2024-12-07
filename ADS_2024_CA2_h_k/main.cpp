@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include "wordlettersfromtxt.h"
+#include "appsfromcsv.h"
 
 using namespace std;
 
@@ -25,13 +27,13 @@ int main()
 				case 1:
 				{
 					cout << "Opening words/letters from txt app:" << endl;
-					run = false;
+					return wordLettersFromTXT();
 					break;
 				}
 				case 2:
 				{
 					cout << "Opening apps from csv app:" << endl;
-					run = false;
+					return appsFromCSV();
 					break;
 				}
 				case 3:

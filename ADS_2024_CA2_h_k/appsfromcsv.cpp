@@ -19,11 +19,6 @@ struct App
 
 template <class K>
 void display(TreeMap<K, BinaryTree<App*>>& map);
-	//display all keys
-	// allow the user to select 1 key
-	// print list from key
-	// display VAlues
-
 bool displayMenu(TreeMap<string, BinaryTree<App*>>& map);
 bool displayMenu(TreeMap<int, BinaryTree<App*>>& map);
 bool displayMenu(TreeMap<float, BinaryTree<App*>>& map);
@@ -32,7 +27,7 @@ void printAppsInOrder(BSTNode<App*>* appNode);
 
 App* constructApp(string csv);
 
-static int appsFromCSV()
+int appsFromCSV()
 {
 	int selection = selectField();
 

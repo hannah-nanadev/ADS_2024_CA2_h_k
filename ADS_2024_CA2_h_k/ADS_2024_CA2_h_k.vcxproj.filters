@@ -27,6 +27,12 @@
     <ClInclude Include="TreeMap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="appsfromcsv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="wordlettersfromtxt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="appsfromcsv.cpp">
