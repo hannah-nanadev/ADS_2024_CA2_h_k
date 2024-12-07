@@ -5,7 +5,7 @@
 using namespace std;
 bool menu(TreeMap<string, BinaryTree<string>> map);
 
-int notmain()
+static int wordLettersFromTXT()
 {
 	//Initialise map of words/letters
 	TreeMap<string, BinaryTree<string>> wordMap;

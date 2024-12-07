@@ -29,10 +29,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="appsfromcsv.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mainbutcsv.cpp">
+    <ClCompile Include="wordlettersfromtxt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
