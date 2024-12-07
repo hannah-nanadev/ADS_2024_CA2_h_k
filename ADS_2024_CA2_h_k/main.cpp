@@ -285,7 +285,7 @@ bool displayMenu(TreeMap<string, BinaryTree<App*>>& map)
 		try
 		{
 			BinaryTree<App*> apps = map.get(input);
-			cout << "Item found successfully!" << endl;
+			cout << "Found " << apps.count() << " item(s) with field " << input << ":" << endl;
 			printAppsInOrder(apps);
 		}
 		catch (logic_error)
@@ -305,15 +305,15 @@ bool displayMenu(TreeMap<int, BinaryTree<App*>>& map)
 {
 	cout << "Please enter one of the above options, or -1 to end." << endl << ">";
 	string input;
-	getline(cin, input);
+	cin >> input;
 	int inputI = stoi(input);
 
-	if (inputI != -1)
+	if (inputI != - 1)
 	{
 		try
 		{
 			BinaryTree<App*> apps = map.get(inputI);
-			cout << "Item found successfully!" << endl;
+			cout << "Found " << apps.count() << " item(s) with field " << inputI << ":" << endl;
 			printAppsInOrder(apps);
 		}
 		catch (logic_error)
@@ -333,7 +333,7 @@ bool displayMenu(TreeMap<float, BinaryTree<App*>>& map)
 {
 	cout << "Please enter one of the above options, or -1 to end." << endl << ">";
 	string input;
-	getline(cin, input);
+	cin >> input;
 	float inputF = stof(input);
 
 	if (inputF != -1)
@@ -341,7 +341,7 @@ bool displayMenu(TreeMap<float, BinaryTree<App*>>& map)
 		try
 		{
 			BinaryTree<App*> apps = map.get(inputF);
-			cout << "Item found successfully!" << endl;
+			cout << "Found " << apps.count() << " item(s) with field " << inputF << ":" << endl;
 			printAppsInOrder(apps);
 		}
 		catch (logic_error)
