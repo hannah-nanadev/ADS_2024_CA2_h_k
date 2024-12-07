@@ -314,6 +314,7 @@ bool displayMenu(TreeMap<int, BinaryTree<App*>>& map)
 		{
 			BinaryTree<App*> apps = map.get(inputI);
 			cout << "Item found successfully!" << endl;
+			printAppsInOrder(apps);
 		}
 		catch (logic_error)
 		{
@@ -341,6 +342,7 @@ bool displayMenu(TreeMap<float, BinaryTree<App*>>& map)
 		{
 			BinaryTree<App*> apps = map.get(inputF);
 			cout << "Item found successfully!" << endl;
+			printAppsInOrder(apps);
 		}
 		catch (logic_error)
 		{
@@ -358,6 +360,7 @@ bool displayMenu(TreeMap<float, BinaryTree<App*>>& map)
 void printAppsInOrder(BinaryTree<App*> appTree)
 {
 	printAppsInOrder(appTree.root);
+	cout << endl;
 }
 
 void printAppsInOrder(BSTNode<App*>* appNode)
