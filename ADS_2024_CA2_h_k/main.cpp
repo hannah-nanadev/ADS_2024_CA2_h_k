@@ -28,6 +28,8 @@ void display(TreeMap<K, BinaryTree<App*>>& map);
 bool displayMenu(TreeMap<string, BinaryTree<App*>>& map);
 bool displayMenu(TreeMap<int, BinaryTree<App*>>& map);
 bool displayMenu(TreeMap<float, BinaryTree<App*>>& map);
+void printAppsInOrder(BinaryTree<App*> appTree);
+void printAppsInOrder(BSTNode<App*>* appNode);
 
 App* constructApp(string csv);
 
@@ -284,6 +286,7 @@ bool displayMenu(TreeMap<string, BinaryTree<App*>>& map)
 		{
 			BinaryTree<App*> apps = map.get(input);
 			cout << "Item found successfully!" << endl;
+			printAppsInOrder(apps);
 		}
 		catch (logic_error)
 		{
@@ -350,4 +353,27 @@ bool displayMenu(TreeMap<float, BinaryTree<App*>>& map)
 		cout << "Thank you for using the program!" << endl;
 		return false;
 	}
+}
+
+void printAppsInOrder(BinaryTree<App*> appTree)
+{
+	printAppsInOrder(appTree.root);
+}
+
+void printAppsInOrder(BSTNode<App*>* appNode)
+{
+	if (appNode == nullptr)
+	{
+		return;
+	}
+	App* cApp = appNode->getItem();
+
+	printAppsInOrder(appNode->getLeft());
+
+	cout << "<ID: " << cApp->id << " - Name: " << cApp->appName
+		<< " - Developer: " << cApp->developer << " - Platform: "<< cApp->platform
+		<< " - Released on " << cApp->releaseDate << " and costs $" << cApp->price << ">"
+		<< endl;
+
+	printAppsInOrder(appNode->getRight());
 }
